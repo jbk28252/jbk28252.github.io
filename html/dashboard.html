@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Social Dashboards</title>
+
+
+  <style>
+    :root{--bg:#f6f7fb;--ink:#111827;--sub:#6b7280;--card:#fff;--border:#e5e7eb;--shadow:0 10px 30px rgba(16,24,40,.10)}
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#fafafa,#f2f4f8 60%,#eef2ff);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Inter,Arial,sans-serif}
+    .wrap{max-width:1000px;margin:48px auto;padding:0 16px}
+    h1{margin:0 0 6px;font-size:28px;letter-spacing:-.02em}
+    p.sub{margin:0 0 24px;color:var(--sub)}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    @media(max-width:640px){.grid{grid-template-columns:1fr}}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);padding:22px;display:flex;flex-direction:column;gap:12px}
+    .title{display:flex;align-items:center;gap:10px;font-weight:700}
+    .desc{color:var(--sub);font-size:14px}
+    .btn{align-self:flex-start;border:1px solid var(--border);border-radius:12px;background:#fff;padding:10px 14px;font-weight:600;cursor:pointer;text-decoration:none;color:inherit;transition:.15s}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(0,0,0,.10)}
+    .update-date{color:#6b7280 !important; opacity:.95;}
+
+    /* ✅ 아이콘 크기(여기 숫자만 바꾸면 됨) */
+    .title .icon{
+      width:32px;height:32px;flex:0 0 32px;
+      display:inline-flex;align-items:center;justify-content:center;
+      border-radius:6px;overflow:hidden;
+    }
+    /* 이미지 아이콘 */
+    .title .icon img{
+      width:100%;height:100%;object-fit:contain;display:block;
+    }
+    /* 혹시 래퍼 없이 이미지만 있을 때 대비 */
+    .card .title > img{
+      width:32px;height:32px;flex:0 0 32px;object-fit:contain;display:inline-block;
+    }
+    /* 이모지(🎵)도 동일 크기로 */
+    .title .icon.emoji{font-size:20px;line-height:1}
+
+    .card{ position:relative; transition:transform .18s ease, box-shadow .18s ease }
+    .card:hover{ transform:translateY(-2px); box-shadow:0 14px 34px rgba(16,24,40,.14) }
+
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:9999px;font-size:12px;font-weight:700;
+      background:#eef2ff;color:#1f2937;border:1px solid #e5e7eb
+    }
+    .badge .dot{width:6px;height:6px;border-radius:9999px;background:#10b981}
+
+    /* tiny tag list */
+    .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+    .tag{font-size:12px;padding:4px 8px;border:1px solid var(--border);border-radius:9999px;color:#4b5563;background:#fff}
+
+    /* preview thumb box (optional image) */
+    .preview{
+      width:100%;height:120px;border-radius:12px;overflow:hidden;
+      background:linear-gradient(135deg,#f7f8fb,#eef2ff);
+      border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
+    }
+    .preview img{width:100%;height:100%;object-fit:cover;display:block}
+
+    /* icon circle */
+    .title .icon{
+      width:36px;height:36px;flex:0 0 36px;border-radius:9999px;background:#fff;
+      border:1px solid var(--border);display:inline-flex;align-items:center;justify-content:center
+    }
+
+    /* action row */
+    .actions{display:flex;gap:8px;margin-top:6px}
+    .btn.ghost{background:#fff;border:1px solid var(--border)}
+  </style>
+
+  <!-- ✅ Add Brand Color Theme Separation File -->
+  <link rel="stylesheet" href="../css/brand-lagikreatif.css">
+</head>
+<body>
+
+<!-- Brand header -->
+<header class="brand">
+  <a href="https://lagikreatif.com/" aria-label="Back to lagikreatif">
+    <img src="../html/images/lagi_kreatif.png" alt="Lagi Kreatif logo">
+  </a>
+</header>
+
+<div class="wrap">
+  <h1>Social Media Dashboards</h1>
+  <p class="sub">Choose the dashboard you want to view.</p>
+
+  <div class="grid">
+    <!-- Instagram -->
+    <article class="card">
+      <div class="title">
+        <a href="https://www.instagram.com/lagikreatif/" target="_blank" rel="noopener"
+           style="display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;">
+      <span class="icon" aria-hidden="true">
+        <img src="../html/images/instagram.png" alt="Instagram" width="22" height="22">
+      </span>
+          Instagram Dashboard
+        </a>
+      </div>
+
+      <!-- 업데이트 배지 -->
+      <div class="badge" style="margin-top:2px;">
+        <span class="dot" aria-hidden="true"></span> Updated Aug 12, 2025
+      </div>
+
+      <!-- 썸네일(정적 이미지 있으면 교체: ../html/images/ig-thumb.jpg) -->
+      <div class="preview" style="margin-top:10px;">
+        <!-- 이미지가 준비되면 아래 주석 해제하고 사용 -->
+        <img src="../html/images/preview/instagram_preview.png" alt="Instagram report preview">
+      </div>
+
+      <div class="desc" style="margin-top:10px;">View Instagram performance reports as an interactive PDF.</div>
+
+      <!-- 어떤 지표가 들어있는지 한 줄 태그 -->
+      <div class="tags">
+        <span class="tag">Video view</span>
+        <span class="tag">Reached audience</span>
+        <span class="tag">Likes</span>
+        <span class="tag">Shares</span>
+        <span class="tag">Comments</span>
+        <span class="tag">Website clicks</span>
+        <span class="tag">New followers</span>
+        <span class="tag">Lost followers</span>
+        <span class="tag">Net growth</span>
+        <span class="tag">Engagement Rate</span>
+        <span class="tag">CVR</span>
+      </div>
+
+      <div class="update-date" style="margin-top:6px;">Last update: August 12, 2025</div>
+      <div class="update-date" style="margin-top:6px;">Reporting period: January 1, 2025 to August 12, 2025</div>
+
+      <!-- 액션 버튼 묶음 -->
+      <div class="actions">
+        <a class="btn primary" href="instagram.html">Open</a>
+        <a class="btn ghost" href="instagram.html" target="_blank" rel="noopener">Open in new tab</a>
+      </div>
+    </article>
+
+    <!-- TikTok -->
+    <article class="card">
+      <div class="title">
+        <a href="https://www.tiktok.com/@lagikreatif" target="_blank" rel="noopener"
+           style="display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;">
+      <span class="icon" aria-hidden="true">
+        <img src="../html/images/tiktok.png" alt="TikTok" width="22" height="22">
+      </span>
+          TikTok Dashboard
+        </a>
+      </div>
+
+      <!-- 업데이트 배지 -->
+      <div class="badge" style="margin-top:2px;">
+        <span class="dot" aria-hidden="true"></span> Updated Aug 10, 2025
+      </div>
+
+      <!-- 썸네일(준비되면 이미지 경로 교체) -->
+      <div class="preview" style="margin-top:10px;">
+        <img src="../html/images/preview/tiktok_preview.png" alt="TikTok report preview">
+      </div>
+
+      <div class="desc" style="margin-top:10px;">
+        View TikTok performance reports as an interactive PDF.
+      </div>
+
+      <div class="tags">
+        <span class="tag">Video view</span>
+        <span class="tag">Reached audience</span>
+        <span class="tag">Likes</span>
+        <span class="tag">Shares</span>
+        <span class="tag">Comments</span>
+        <span class="tag">New followers</span>
+        <span class="tag">Lost followers</span>
+        <span class="tag">Net growth</span>
+        <span class="tag">Engagement Rate</span>
+        <span class="tag">CVR</span>
+      </div>
+
+      <div class="update-date" style="margin-top:6px;">Last update: August 10, 2025</div>
+      <div class="update-date">Reporting period: January 1, 2025 to August 10, 2025</div>
+
+      <!-- 액션 버튼 -->
+      <div class="actions">
+        <a class="btn primary" href="tiktok.html">Open</a>
+        <a class="btn ghost" href="tiktok.html" target="_blank" rel="noopener">Open in new tab</a>
+      </div>
+    </article>
+
+  </div>
+  <footer style="text-align:left; padding:20px; font-size:14px; color:#9ca3af;">
+    © 2025 Lagi Kreatif · All rights reserved.
+  </footer>
+</div>
+</body>
+</html>
